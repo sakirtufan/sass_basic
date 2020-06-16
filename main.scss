@@ -1,0 +1,61 @@
+$background-color : #e74c3c;
+$secondary-color : white;   //variable yapisi
+
+@mixin border-generator($top-left, $top-right, $bottom-left, $bottom-right) {
+   border-top-left-radius: $top-left;
+   border-top-right-radius: $top-right;
+   border-bottom-left-radius: $bottom-left;     //mixin yapisi(fonksiyon gibi)
+   border-bottom-right-radius: $bottom-right;
+}
+
+body{
+   width: 960px;
+   margin: 0 auto;
+   background: $background-color;
+}
+
+section {
+   article {
+      .article_title{
+         font-size: 32px;
+         color: $secondary-color;
+      }
+      p{
+         .article_author{
+            font-weight: bold;
+            color: $secondary-color;
+         }
+      }                                                         //nesting yapisi
+      .article_body{
+         a {
+            color: $secondary-color;
+            text-decoration: none;
+
+            &:hover {
+               color:blue;
+               text-decoration: underline;
+            }
+         }
+      }
+   }
+}
+
+.box {
+   width: 200px;
+   height: 200px;
+   background: yellow;
+   display: inline-block;
+}
+
+.box1 {
+   @extend .box;
+   background: green;
+   @include border-generator(20px,30px,40px,50px)
+}
+.box2 {
+   @extend .box;   
+}
+.box3 {
+   @extend .box;
+   background: blueviolet;
+}
